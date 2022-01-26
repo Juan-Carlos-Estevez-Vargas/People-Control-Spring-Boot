@@ -2,17 +2,17 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-	<title>Login</title>
+	<title>[[#{login.tittle}]]</title>
 	<meta charset="UTF-8" />
 </head>
 
 <body>
-	<h1>Login</h1>
+	<h1>[[#{login.tittle}]]</h1>
 	<form method="POST" th:action="@{/login}">
-		<label for="username">Username:</label>
+		<label for="username">[[#{login.username}]]</label>
 		<input type="text" name="username" id="username"/>
 		<br />
-		<label for="password">Password:</label>
+		<label for="password">[[#{login.password}]]</label>
 		<input type="password" name="password" id="password"/>
 		<br />
 				<input type="submit" value="Login"/>

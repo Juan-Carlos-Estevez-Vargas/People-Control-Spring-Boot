@@ -23,6 +23,7 @@ public class SecuriryConfig extends WebSecurityConfigurerAdapter{
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests().antMatchers("/edit/**", "/add/**", "/delete/**")
 			.hasRole("ADMIN").antMatchers("/").hasAnyRole("ADMIN", "USER")
-				.and().formLogin().loginPage("/login");
+				.and().formLogin().loginPage("/login").and()
+					.exceptionHandling().accessDeniedPage("/errors/403");
 	}
 }

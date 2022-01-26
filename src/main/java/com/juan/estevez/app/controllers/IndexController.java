@@ -1,6 +1,8 @@
 package com.juan.estevez.app.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -17,7 +19,7 @@ public class IndexController {
     private IPersonService personService;
     
     @GetMapping("/")
-    public String home(Model model){
+    public String home(Model model, @AuthenticationPrincipal User user){
         var people = personService.peopleList();
         model.addAttribute("people", people);
         return "index";
