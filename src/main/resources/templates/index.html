@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>[[#{index.tittle}]]</title>
+	<meta charset="UTF-8">
+</head>
+
+<body>
+	<header th:replace="layout/template :: header"></header>
+	<a th:href="@{/add}">[[#{person.create}]]</a>
+	<div th:if="${people != null and !people.empty}">
+		<table border="1">
+			<tr>
+				<th>[[#{person.name}]]</th>
+				<th>[[#{person.lastName}]]</th>
+				<th>[[#{person.email}]]</th>
+				<th>[[#{person.phone}]]</th>
+				<th>[[#{action.edit}]]</th>
+				<th>[[#{action.delete}]]</th>
+			</tr>
+			<tr th:each="person : ${people}">
+				<td th:text="${person.name}"></td>
+				<td th:text="${person.lastName}"></td>
+				<td th:text="${person.email}"></td>
+				<td th:text="${person.phone}"></td>
+				<td><a th:href="@{/edit/} + ${person.idPerson}" />[[#{action.edit}]]</td>
+				<td><a th:href="@{/delete(idPerson=${person.idPerson})}" />[[#{action.delete}]]</td>
+			</tr>
+		</table>
+	</div>	
+	<div th:if="${people == null or people.empty}">
+		[[#{person.emptyList}]]
+	</div>
+	<footer th:replace="layout/template :: footer"></footer>
+</body>
+
+</html>

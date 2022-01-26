@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Template</title>
+	<meta charset="UTF-8" />
+</head>
+
+<body>
+	<header th:fragment="header">
+		<h1 th:text="#{template.tittle}"></h1>
+	</header>
+
+	<footer th:fragment="footer">
+		<div>
+			<br />
+			<a th:href="@{/(lang=es)}">ES</a> |
+			<a th:href="@{/(lang=en)}">EN</a> |
+			<span> [[#{template.footer}]] <a href="#">Redes</a></span>
+		</div>
+	</footer>
+
+</body>
+
+</html>
