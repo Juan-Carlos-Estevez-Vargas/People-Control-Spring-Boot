@@ -8,6 +8,12 @@
 
 <body>
 	<header th:replace="layout/template :: header"></header>
+	<section th:replace="layout/botonsAdd :: botonsAdd"></section>
+	<!--
+	<section th:replace="layout/addPerson :: addPerson"></section>
+	<section th:replace="layout/peopleList :: peopleList"></section>-->
+	<footer th:replace="layout/template :: footer"></footer>
+	
 	<a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/add}">[[#{person.create}]]</a>
 	<div th:if="${people != null and !people.empty}">
 		<table border="1">
@@ -32,7 +38,7 @@
 	<div th:if="${people == null or people.empty}">
 		[[#{person.emptyList}]]
 	</div>
-	<footer th:replace="layout/template :: footer"></footer>
+	
 </body>
 
 </html>
