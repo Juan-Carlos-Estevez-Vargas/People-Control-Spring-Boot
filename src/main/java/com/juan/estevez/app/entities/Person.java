@@ -27,4 +27,7 @@ public class Person implements Serializable{
     
     @Column(name = "PHONE")
     private String phone;
+    
+    @Column(name = "BALANCE")
+    private Double balance;
 }

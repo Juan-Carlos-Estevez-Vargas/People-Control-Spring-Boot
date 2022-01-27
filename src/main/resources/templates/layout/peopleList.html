@@ -2,12 +2,60 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
 	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
-<head th:fragment="head">
-	
+<head>
+	<title>People List</title>
+	<meta charset="UTF-8" />
 </head>
 
 <body>
-
+	<section th:fragment="peopleList" id="people">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-9">
+					<div class="card">
+						<div class="card-header">
+							<h4>[[#{person.tittle.list}]]</h4>
+						</div>
+						<div th:if="${people != null and !people.empty}">
+							<table class="table table-stryped">
+								<thead class="thead-dark">
+									<tr>
+										<th>#</th>
+										<th th:text="#{person.name}"></th>
+										<th th:text="#{person.balance}"></th>
+										<th></th>
+										<th></th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="person, accountant : ${people}">
+										<td>[[${accountand.count}]]</td>
+										<td>[[${person.name} + ' ' + ${person.lastName}]]</td>
+										<td>[[${new java.text.DecimalFormat('$#,##0.00').format(person.balance)}]]</td>
+										<td>
+											<a sec:authorize="hasRole('ROLE_ADMIN')"
+												th:href="@{/edit/} + ${person.idPerson}" class="btn btn-secondary">
+												<i class="fas fa-angle-double-right"></i> [[#{action.edit}]]
+											</a>
+										</td>
+										<td>
+											<a sec:authorize="hasRole('ROLE_ADMIN')"
+												th:href="@{/delete(idPerson=${person.idPerson})}" class="btn btn-dark">
+												<i class="fas fa-angle-double-right"></i> [[#{action.delete}]]
+											</a>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="text-center p-2" th:if="${people == null or people.empty}">
+							<span th:text="#{person.emptyList}"></span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 </body>
 
 </html>
