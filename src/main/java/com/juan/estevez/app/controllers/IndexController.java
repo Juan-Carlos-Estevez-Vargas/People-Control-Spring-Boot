@@ -22,6 +22,12 @@ public class IndexController {
     public String home(Model model, @AuthenticationPrincipal User user){
         var people = personService.peopleList();
         model.addAttribute("people", people);
+        var totalBalance = 0D;
+        for(var p : people) {
+        	totalBalance += p.getBalance();
+        }
+        model.addAttribute("totalBalance", totalBalance);
+        model.addAttribute("totalPersonas", people.size());
         return "index";
     }
     

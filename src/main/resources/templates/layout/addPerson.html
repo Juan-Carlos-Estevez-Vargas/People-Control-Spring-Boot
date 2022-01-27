@@ -2,12 +2,53 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
 	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
-<head th:fragment="head">
-	
+<head >
+	<title>Add Person</title>
+	<meta charset="UTF-8" />
 </head>
 
 <body>
-
+<section th:fragment="addPerson">
+	<div id="addPerson" class="modal fade">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header bg-info text-white">
+					<h5 class="modal-tittle" th:text="#{action.add}"></h5>
+					<button class="close" data-dismiss="modal">
+						<span>&times;</span>
+					</button>
+				</div>
+				<form th:action="@{/save}" th:object="${person}" method="POST" class="was-validated">
+					<div class="modal-body">
+						<div class="form-group">
+							<label for="name" th:text="#{person.name}"></label>
+							<input type="text" class="form-control" name="name" required="true" />
+						</div>
+						<div class="form-group">
+							<label for="lastName" th:text="#{person.lastName}"></label>
+							<input type="text" class="form-control" name="lastName" required="true" />
+						</div>
+						<div class="form-group">
+							<label for="email" th:text="#{person.email}"></label>
+							<input type="email" class="form-control" name="email" required="true" />
+						</div>
+						<div class="form-group">
+							<label for="phone" th:text="#{person.phone}"></label>
+							<input type="tel" class="form-control" name="phone" />
+						</div>
+						<div class="form-group">
+							<label for="balance" th:text="#{person.balance}"></label>
+							<input type="number" class="form-control" name="balance" required="true" step="any" />
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button class="btn btn-primary" type="submit" th:text="#{action.save}"></button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</section>
 </body>
 
 </html>
