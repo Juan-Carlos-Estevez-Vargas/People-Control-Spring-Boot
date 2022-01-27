@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head th:fragment="head">
 	<title>Template</title>
@@ -14,11 +15,11 @@
 <body>
 	<header th:fragment="header">
 		<nav class="navbar navbar-expand-sm navbar-dark bg-dark p-0">
-				<div class="container">
-					<a th:href="@{/}" class="navbar-brand" th:text="#{template.tittle}"></a>
-					<button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-						<span class="navbar-toggler-icon"></span>
-					</button>
+			<div class="container">
+				<a th:href="@{/}" class="navbar-brand" th:text="#{template.tittle}"></a>
+				<button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+					<span class="navbar-toggler-icon"></span>
+				</button>
 				<div class="collapse navbar-collapse" id="navbarCollapse">
 					<ul class="navbar-nav">
 						<li class="nav-item px-2">
@@ -36,28 +37,36 @@
 						<li class="nav-item">
 							<form method="POST" th:action="@{/logout}">
 								<a href="#" onclick="this.parentNode.submit();" class="nav-link">
-								<i class="fas fa-user-times"></i> [[#{navbar.logout}]]
+									<i class="fas fa-user-times"></i> [[#{navbar.logout}]]
 								</a>
 							</form>
 						</li>
 					</ul>
-					
 				</div>
+			</div>
+		</nav>
+		<section id="main-header" class="py-2 bg-info text-white">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-6">
+						<h1>
+							<i class="fas fa-cog"></i> [[#{template.tittle}]]
+						</h1>
+					</div>
 				</div>
-			</nav>
+			</div>
+		</section>
 	</header>
 
-	<footer th:fragment="footer">
-		<div>
-			<br />
-			<a th:href="@{/(lang=es)}">ES</a> |
-			<a th:href="@{/(lang=en)}">EN</a> |
-			<span> [[#{template.footer}]] <a href="#">Redes</a></span>
-			<form method="POST" th:action="@{/logout}">
-			<b>User: </b> <span sec:authentication="name">User has login</span>
-			<b>Roles: </b> <span sec:authentication="principal.authorities">User roles</span>
-			<a href="#" onclick="this.parentNode.submit();">Logout</a>
-			</form>
+	<footer th:fragment="footer" class="bg-warning text-white mt-5 p-5">
+		<div class="container">
+			<div class="col">
+				<p class="leaf text-center">
+					<a th:href="@{/(lang=es)}">ES</a>
+					<a th:href="@{/(lang=en)}">EN</a>
+					<span> [[#{template.footer}]] <a href="#">&copy; Redes</a></span>
+				</p>
+			</div>
 		</div>
 	</footer>
 
